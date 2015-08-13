@@ -1,5 +1,3 @@
-package abshell;
-
 import abshell.lib.*;
 
 /**
@@ -26,7 +24,9 @@ public class AbShell {
                 command += args[i] + " ";
             }
             
-            CommandExecuter executer = new CommandExecuter(Runtime.getRuntime(), command);
+            BenchmarkEntity benchmarkEntity = new BenchmarkEntity(command, iterations, concurrecy);
+            
+            CommandExecuter executer = new CommandExecuter(Runtime.getRuntime(), benchmarkEntity.getCommand());
             CommandRunner runner = new CommandRunner(executer, iterations, concurrecy);
             
             runner.run();
