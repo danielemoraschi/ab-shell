@@ -1,10 +1,12 @@
-import abshell.lib.*;
+import ab.command.CommandExecuter;
+import ab.entity.BenchmarkEntity;
+import ab.service.CommandRunner;
 
 /**
  * @author dmoraschi
  *
  */
-public class AbShell {
+public class AB {
 
     /**
      * @param args

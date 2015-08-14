@@ -1,4 +1,4 @@
-package abshell.lib;
+package ab.command;
 
 import java.io.BufferedReader;
 import java.io.IOException;

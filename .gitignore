@@ -1,5 +1,8 @@
 # Created by https://www.gitignore.io
 
+# Compiled Java classes
+*.class
+
 ### Eclipse ###
 *.pydevproject
 .metadata

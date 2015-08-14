@@ -1,7 +1,7 @@
 /**
  * 
  */
-package abshell.lib;
+package ab.entity;
 
 /**
  * @author dmoraschi
