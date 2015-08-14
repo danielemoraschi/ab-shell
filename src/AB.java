@@ -26,9 +26,9 @@ public class AB {
                 command += args[i] + " ";
             }
             
-            Task benchmarkEntity = new Task(command, iterations, concurrecy);
+            Task task = new Task(command, iterations, concurrecy);
             
-            ShellCommandExecuter executer = new ShellCommandExecuter(Runtime.getRuntime(), benchmarkEntity.getCommand());
+            ShellCommandExecuter executer = new ShellCommandExecuter(Runtime.getRuntime(), task.getCommand());
             ShellCommandRunner runner = new ShellCommandRunner(executer, iterations, concurrecy);
             
             runner.run();
