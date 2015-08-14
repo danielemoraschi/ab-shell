@@ -7,7 +7,7 @@ package ab.entity;
  * @author dmoraschi
  *
  */
-public class BenchmarkEntity {
+public class Task {
 	
 	private Integer iterations;
 	private Integer concurrecy;
@@ -20,7 +20,7 @@ public class BenchmarkEntity {
 	 * @param concurrecy
 	 * @throws Exception
 	 */
-    public BenchmarkEntity(String command, Integer iterations, Integer concurrecy) throws Exception {
+    public Task(String command, Integer iterations, Integer concurrecy) throws Exception {
         if (iterations < 0) {
             throw new Exception("Invalid number value for 'iterations'");
         }

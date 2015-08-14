@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
  * @author dmoraschi
  *
  */
-public class CommandExecuter {
+public class ShellCommandExecuter {
     
     Runtime runtime;
     String command;
@@ -18,7 +18,7 @@ public class CommandExecuter {
      * @param command
      * @throws Exception
      */
-    public CommandExecuter(Runtime runtime, String command) throws Exception {
+    public ShellCommandExecuter(Runtime runtime, String command) throws Exception {
         if (command.trim().isEmpty()) {
             throw new Exception("Empty command");
         }

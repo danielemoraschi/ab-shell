@@ -2,11 +2,11 @@ package ab.service;
 
 import java.io.IOException;
 
-import ab.command.CommandExecuter;
+import ab.command.ShellCommandExecuter;
 
-public class CommandRunner {
+public class ShellCommandRunner {
     
-    CommandExecuter executer;
+    ShellCommandExecuter executer;
     Integer iterations;
     Integer concurrecy;
     
@@ -17,7 +17,7 @@ public class CommandRunner {
      * @param command
      * @throws Exception
      */
-    public CommandRunner(CommandExecuter executer, Integer iterations, Integer concurrecy) throws Exception {
+    public ShellCommandRunner(ShellCommandExecuter executer, Integer iterations, Integer concurrecy) throws Exception {
         if (iterations < 0) {
             throw new Exception("Invalid number value for 'iterations'");
         }

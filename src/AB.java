@@ -1,6 +1,6 @@
-import ab.command.CommandExecuter;
-import ab.entity.BenchmarkEntity;
-import ab.service.CommandRunner;
+import ab.command.ShellCommandExecuter;
+import ab.entity.Task;
+import ab.service.ShellCommandRunner;
 
 /**
  * @author dmoraschi
@@ -26,10 +26,10 @@ public class AB {
                 command += args[i] + " ";
             }
             
-            BenchmarkEntity benchmarkEntity = new BenchmarkEntity(command, iterations, concurrecy);
+            Task benchmarkEntity = new Task(command, iterations, concurrecy);
             
-            CommandExecuter executer = new CommandExecuter(Runtime.getRuntime(), benchmarkEntity.getCommand());
-            CommandRunner runner = new CommandRunner(executer, iterations, concurrecy);
+            ShellCommandExecuter executer = new ShellCommandExecuter(Runtime.getRuntime(), benchmarkEntity.getCommand());
+            ShellCommandRunner runner = new ShellCommandRunner(executer, iterations, concurrecy);
             
             runner.run();
             
