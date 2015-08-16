@@ -4,11 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import ab.entity.Task;
+
 /**
  * @author dmoraschi
  *
  */
-public class ShellCommandExecuter {
+public class ShellCommandExecutor {
     
     Runtime runtime;
     String command;
@@ -18,13 +20,9 @@ public class ShellCommandExecuter {
      * @param command
      * @throws Exception
      */
-    public ShellCommandExecuter(Runtime runtime, String command) throws Exception {
-        if (command.trim().isEmpty()) {
-            throw new Exception("Empty command");
-        }
-        
+    public ShellCommandExecutor(Task task, Runtime runtime) throws Exception {
         this.runtime = runtime;
-        this.command = command.trim();
+        this.command = task.getCommand();
     }
     
     /**
@@ -59,7 +57,7 @@ public class ShellCommandExecuter {
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(p.getInputStream()));
 
-        String line = "";
+        String line;
         StringBuffer output = new StringBuffer();
         while ((line = reader.readLine()) != null) {
             output.append(line + "\n");
