@@ -40,28 +40,35 @@ public class ShellCommandRunner {
                             
                             System.out.println(this.getName() + " int: " + intr);
                             long start = System.currentTimeMillis();
+                            
+                            //String s = executor.executeCommandAndReturn();
+                            //System.out.println(s);
+                            
                             int ret = executor.executeCommand();
-                            sleep(100);
+                            sleep(250);
                             long end = System.currentTimeMillis();
                             
                             TaskExecution taskExec = new TaskExecution(start, end, ret);
                             benchmarkRunner.getBench().registerExecution(taskExec);
                             
                             synchronized(benchmarkRunner) {
-                                benchmarkRunner.notify();
                                 intr--;
                             }
                             
                         } catch (Exception e) {
                             e.printStackTrace();
                         }                    
-                        
+                    }
+                    
+                    synchronized(benchmarkRunner) {
+                        benchmarkRunner.notify();
                     }
                 }
                 
             }).start();
-            
+                        
         }
+        
     }
 
 }

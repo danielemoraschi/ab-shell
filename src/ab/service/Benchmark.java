@@ -40,10 +40,19 @@ public class Benchmark {
         calculator.addTaskExecution(task);
     }
 
+    /**
+     * 
+     * @return
+     */
     public long getDuration() {
         return endAt - startAt;
     }
     
+    /**
+     * 
+     * @return DataCalculator
+     * @throws Exception
+     */
     public DataCalculator getData() throws Exception {
         if (!isStarted()) {
             throw new Exception("Benchmark not started yet.");
@@ -54,6 +63,28 @@ public class Benchmark {
         }
         
         return calculator;
+    }
+    
+    /**
+     * @throws Exception
+     */
+    public void printStats() throws Exception {
+        if (!isStarted()) {
+            throw new Exception("Benchmark not started yet.");
+        }
+        
+        if (!isEnded()) {
+            throw new Exception("Benchmark not ended yet.");
+        }
+        
+        System.out.println("timeTakenForTests: " + calculator.timeTakenForTests());
+        System.out.println("totalRequest: " + calculator.getSize());
+        System.out.println("completeRequests: " + calculator.completeRequests());
+        System.out.println("failedRequests: " + calculator.failedRequests());
+        System.out.println("requestsPerSecond: " + calculator.requestsPerSecond());
+        System.out.println("timePerRequestAverage: " + calculator.timePerRequestAverage());
+        System.out.println("timePerRequestMax: " + calculator.timePerRequestMax());
+        System.out.println("timePerRequestMin: " + calculator.timePerRequestMin());
     }
         
 }

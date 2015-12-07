@@ -9,9 +9,7 @@ package ab.entity;
  */
 public class Task {
 	
-	private int iterations;
-	private int concurrency;
-	private String command;
+	private Terminal terminal;
     
 	/**
 	 * 
@@ -20,22 +18,8 @@ public class Task {
 	 * @param concurrecy
 	 * @throws Exception
 	 */
-    public Task(String command, int iterations, int concurrency) throws Exception {
-        if (iterations < 0) {
-            throw new Exception("Invalid number value for 'iterations'");
-        }
-        
-        if (concurrency < 0) {
-            throw new Exception("Invalid number value for 'concurrency'");
-        }
-        
-        if (command.trim().isEmpty()) {
-            throw new Exception("Empty command");
-        }
-        
-        this.iterations = iterations;
-        this.concurrency = concurrency;
-        this.command = command.trim();
+    public Task(Terminal terminal) throws Exception {        
+        this.terminal = terminal;
     }
     
     /**
@@ -43,7 +27,7 @@ public class Task {
      * @return
      */
     public int getIterations() {
-        return iterations;
+        return terminal.getIterations();
     }
     
     /**
@@ -51,7 +35,7 @@ public class Task {
      * @return
      */
     public int getConcurrency() {
-        return concurrency;
+        return terminal.getConcurrency();
     }
     
     /**
@@ -59,7 +43,14 @@ public class Task {
      * @return
      */
     public String getCommand() {
-        return command;
+        //return terminal.getCommand().toString().trim();
+        String listString = "";
+
+        for (String s : terminal.getCommand()) {
+            listString += s + " ";
+        }
+        
+        return listString.trim();
     }
 
 }

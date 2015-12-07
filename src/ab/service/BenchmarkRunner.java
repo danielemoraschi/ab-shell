@@ -19,42 +19,27 @@ public class BenchmarkRunner extends Thread {
         return bench;
     }
 
+    /**
+     * 
+     */
     public void run() {
-        bench.start();
-        
-        int intr = task.getIterations();
-        int cc = task.getConcurrency();
-        int tot = cc*intr;
-        
-        while (tot  > 0) {
-            synchronized (this) {
-                try {
-                    runner.run(this);
-                    wait();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            tot--;
-        }
-        
-        
         try {
-            bench.end();
+           
+            bench.start();
+            runner.run(this);
             
-            System.out.println("timeTakenForTests: " + bench.getData().timeTakenForTests());
-            System.out.println("totalRequest: " + bench.getData().getSize());
-            System.out.println("completeRequests: " + bench.getData().completeRequests());
-            System.out.println("failedRequests: " + bench.getData().failedRequests());
-            System.out.println("requestsPerSecond: " + bench.getData().requestsPerSecond());
-            System.out.println("timePerRequestAverage: " + bench.getData().timePerRequestAverage());
-            System.out.println("timePerRequestMax: " + bench.getData().timePerRequestMax());
-            System.out.println("timePerRequestMin: " + bench.getData().timePerRequestMin());
-
+            synchronized (this) {
+                wait();
+            }
+            
+            bench.end();
+            bench.printStats();
+            
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+            throw new RuntimeException(e);
+        }        
     }
 
 }
